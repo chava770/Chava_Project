@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+   {% for worker in work %}
+   <div class="worker-info">
+    <div class="worker-pic">
+        <a href="{% url 'worker:detail' EMPLOYEE_ID=worker.EMPLOYEE_ID %}"><img src="{{worker.IMAGE}}"></a>
+    </div>
+    <div class="worker-details">
+      <h2 class="worker-name">{{worker.FIRST_NAME}}</h2>
+      <h3 class="worker-lastname">{{worker.LAST_NAME}}</h3>
+      <h3 class="worker-possition">{{worker.JOB_ID}}</h3>
+    </div>
+   </div>
+   {% endfor %} 
+{% endblock %}

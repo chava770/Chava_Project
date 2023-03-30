@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="worker-detail-pic">
+    <img src="{{worker.IMAGE.url}}">
+  </div>
+  <div class="worker-detail">
+    <h2>First name: {{worker.FIRST_NAME}}</h2>
+    <h3>Last name: {{worker.LAST_NAME}}</h3>
+    <p><b>Employee id:</b> {{worker.EMPLOYEE_ID}}</p>
+    <p><b>Hire date:</b> {{worker.HIRE_DATE}}</p>
+    <p><b>Email:</b> {{worker.EMAIL}}</p>
+    <p><b>Number:</b> {{worker.PHONE_NUMBER}}</p>
+    <p><b>possition:</b> {{worker.JOB_ID}}</p>
+    <p><b>Salary:</b> {{worker.SALARY}}</p>
+    <p><b>Commission pct:</b> {{worker.COMMISSION_PCT}}</p>
+    <p><b>Department id:</b> {{worker.DEPARTMENT_ID}}</p>
+    {% if worker.MANAGER %}
+        <p><b>Manager:</b> <a href="{% url 'worker:detail' EMPLOYEE_ID=worker.MANAGER.EMPLOYEE_ID %}">
+            {{worker.MANAGER.FIRST_NAME}} {{worker.MANAGER.LAST_NAME}}
+        </a></p>
+    {% endif %}
+    <p><b>Jobs:</b></p>
+    <ul>
+    {% for job in worker.jobs.all %}
+        <li><b>{{ job.title }}</b>
+            <ul>
+                {% for paradigm in job.paradigms.all %}
+                    <li>{{ paradigm.name }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul> 
+  </div>
+</form>
+{% endblock %}

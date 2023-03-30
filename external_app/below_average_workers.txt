@@ -1,0 +1,5 @@
+Employee: Bruce Ernst, Possition: IT_PROG, Salary: 9000.00
+Employee: David Austin, Possition: IT_PROG, Salary: 6000.00
+Employee: Harry Cage, Possition: SA_REP, Salary: 3000.00
+Employee: Noa Cohen, Possition: SA_REP, Salary: 3000.00
+Employee: Adi Vaknin, Possition: SA_REP, Salary: 3000.00
